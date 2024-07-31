@@ -1,0 +1,87 @@
+{
+  "name": "llm-code-comprehension",
+  "displayName": "llm-code-comprehension",
+  "description": "A VSCode plugin used to ask locally running LLMs questions about selected code.",
+  "author": {
+    "name": "Koen Reefman"
+  },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/Koen-Reefman/llm-code-comprehension.git"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-comprehension-llm.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "llm-view-container",
+          "title": "LLM Code Comprehension Plugin",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "llm-view-container": [
+        {
+          "type": "webview",
+          "id": "llm-view",
+          "name": "LLM View",
+          "icon": "resources/icon.svg",
+          "contextualTitle": "Sidebar view"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "handlebars": "^4.7.8",
+    "html-loader": "^5.0.0",
+    "mistral-tokenizer-js": "^1.0.0",
+    "node-loader": "^2.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.0.33",
+    "axios": "^1.6.7",
+    "chromadb-default-embed": "^2.13.2",
+    "fs": "^0.0.1-security",
+    "langchain": "^0.1.23",
+    "llama3-tokenizer-js": "^1.0.0",
+    "lodash": "^4.17.21"
+  }
+}

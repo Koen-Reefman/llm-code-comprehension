@@ -1,0 +1,9 @@
+dist
+node_modules
+*.sqlite3
+chroma.log
+
+__pycache__
+venv
+
+.DS_STORE
